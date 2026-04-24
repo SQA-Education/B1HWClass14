@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1 Session 14: School & Field Trip</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#5B5091;min-height:100vh;padding:20px}.container{max-width:800px;margin:0 auto}.header{background:#fff;border-radius:20px;padding:30px;margin-bottom:20px;text-align:center}.header h1{color:#5B5091;font-size:1.4em}.header p{color:#888}.badge{background:#F5A623;color:#fff;padding:4px 12px;border-radius:20px;font-size:.8em}.card{background:#fff;border-radius:16px;padding:25px;margin-bottom:20px}.card h2{color:#5B5091;margin-bottom:15px}label{font-weight:600;color:#333;display:block;margin-bottom:8px}input[type="text"]{width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font-size:16px;margin-bottom:15px}.btn{background:#5B5091;color:#fff;border:none;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;width:100%;margin-top:10px}.btn:hover{background:#4a4080}.btn-orange{background:#F5A623}.section{display:none}.section.active{display:block}.reading-box{background:#f8f9fa;border-radius:12px;padding:20px;margin-bottom:20px;border-left:4px solid #5B5091;line-height:1.7}.question{background:#f8f9fa;border-radius:12px;padding:20px;margin:15px 0;border:1px solid #eee}.question h4{margin-bottom:15px;color:#333}.option{padding:14px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer;margin-bottom:10px;display:flex;align-items:center;gap:12px}.option:hover{border-color:#5B5091;background:#f8f6ff}.option.selected{border-color:#5B5091;background:#f0edff}.option.correct{border-color:#22c55e;background:#f0fdf4}.option.incorrect{border-color:#ef4444;background:#fef2f2}.circle{width:20px;height:20px;border:2px solid #ccc;border-radius:50%;flex-shrink:0}.option.selected .circle{border-color:#5B5091;background:#5B5091}textarea{width:100%;min-height:120px;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font-size:16px;font-family:inherit}textarea:focus{outline:none;border-color:#5B5091}.progress{height:8px;background:#e0e0e0;border-radius:4px;margin-bottom:20px}.progress-bar{height:100%;background:#F5A623;border-radius:4px}.score-card{background:linear-gradient(135deg,#5B5091,#7B6DB5);border-radius:20px;padding:35px;color:#fff;text-align:center}.score-big{font-size:4em;font-weight:700}.scores{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}.scores>div{background:rgba(255,255,255,.15);border-radius:12px;padding:12px}.scores label{font-size:.75em;opacity:.9}.scores span{font-size:1.4em;font-weight:700;display:block}.fill-input{width:150px;border:none;border-bottom:2px solid #5B5091;text-align:center;font-size:16px;padding:5px;background:transparent}.record-btn{width:80px;height:80px;border-radius:50%;background:#fff;border:3px solid #5B5091;cursor:pointer;margin:20px auto;display:flex;align-items:center;justify-content:center}.record-btn.recording{border-color:#ef4444;animation:pulse 1.5s infinite}.record-dot{width:24px;height:24px;background:#5B5091;border-radius:50%}.record-btn.recording .record-dot{background:#ef4444;border-radius:4px;width:20px;height:20px}@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 15px rgba(239,68,68,0)}}.timer{text-align:center;font-size:28px;font-weight:700;color:#5B5091}.status{text-align:center;color:#666;margin-top:10px}audio{width:100%;margin-top:15px}.hidden{display:none}.feedback{background:#f8f6ff;border:1px solid #5B5091;border-radius:12px;padding:20px;margin-top:15px}@media(max-width:600px){.scores{grid-template-columns:repeat(3,1fr)}}</style>
+</head>
+<body>
+<div class="container">
+<div class="header"><h1>Session 14: School & Field Trip <span class="badge">Quiz</span></h1><p>Week 6 • Present Perfect & School Vocabulary</p></div>
+<div class="section active" id="start"><div class="card"><label>Your Full Name</label><input type="text" id="studentName" placeholder="Enter your name...">
+<label>Your Teacher</label>
+<label>Your Class</label>
+<input type="hidden" id="teacherName" value="">
+<select id="className" style="width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font-size:16px;margin-bottom:15px" onchange="setTeacher(this)">
+  <option value="">-- Select your class --</option>
+  <optgroup label="Laura Ebel">
+    <option value="3088" data-teacher="Laura Ebel">3088 -- Mon/Wed 9:00 AM (Laura)</option>
+    <option value="3090" data-teacher="Laura Ebel">3090 -- Mon/Wed 6:30 PM (Laura)</option>
+    <option value="3095" data-teacher="Laura Ebel">3095 -- Tue/Thu 11:00 AM (Laura)</option>
+  </optgroup>
+  <optgroup label="Jonelle Williams">
+    <option value="3098" data-teacher="Jonelle Williams">3098 -- Tue/Thu 6:30 PM (Jonelle)</option>
+    <option value="3101" data-teacher="Jonelle Williams">3101 -- Tue/Thu 8:30 PM (Jonelle)</option>
+  </optgroup>
+</select>
+<button class="btn" onclick="startQuiz()">Start Homework →</button></div></div>
+<div class="section" id="s1"><div class="card"><div class="progress"><div class="progress-bar" style="width:20%"></div></div><h2>1. Reading Comprehension</h2><div class="reading-box"><p><strong>Dear Parents,</strong></p><p>George Washington Middle School is excited to announce our upcoming Social Studies field trip to <strong>Mount Vernon</strong> this April! Our classes have studied George Washington's legacy, and this all-day tour brings that history to life.</p><p>We have coordinated with the school nurse regarding medical needs, and our staff has prepared a wonderful itinerary. Students should dress for the weather since we will be outdoors, and everyone needs to bring a <strong>sack lunch</strong>.</p><p>Please sign the enclosed <strong>permission slip</strong> and return it to your child's teacher by Friday. We look forward to this historic adventure!</p><p><em>Sincerely, The Principal</em></p></div><div id="readingQuestions"></div><button class="btn" onclick="checkS1()">Continue →</button></div></div>
+<div class="section" id="s2"><div class="card"><div class="progress"><div class="progress-bar" style="width:40%"></div></div><h2>2. Vocabulary - School Words</h2><p style="color:#666;margin-bottom:15px">Match the word to its definition:</p><div id="vocabQuestions"></div><button class="btn" onclick="checkS2()">Continue →</button></div></div>
+<div class="section" id="s3"><div class="card"><div class="progress"><div class="progress-bar" style="width:60%"></div></div><h2>3. Writing</h2><p style="color:#666;margin-bottom:15px">Write 6–8 sentences about your education. What have you studied? Use the <strong>present perfect</strong>. Aim for at least <strong>3 present perfect simple verbs</strong>.</p><textarea id="writing" placeholder="I have studied English for many years. I have also learned..."></textarea><p style="text-align:right;color:#888;margin-top:5px">Words: <span id="wc">0</span></p><div id="wFeedback" class="feedback hidden"></div><button class="btn" id="wBtn" onclick="checkWriting()">Get Feedback →</button><button class="btn hidden" id="wNext" onclick="showSection('s4')">Continue →</button></div></div>
+<div class="section" id="s4"><div class="card"><div class="progress"><div class="progress-bar" style="width:80%"></div></div><h2>4. Speaking</h2><p style="color:#666;margin-bottom:15px">Talk about what you have done to prepare for the final exam and what you need to do. Aim for <strong>2 present perfect verbs</strong> and <strong>2 modals</strong> (must, have to, need to, should, must not, don't have to, don't need to, shouldn't).</p><div class="record-btn" id="recBtn" onclick="toggleRec()"><div class="record-dot"></div></div><div class="timer" id="timer">0:00</div><div class="status" id="recStatus">Click to start recording</div><audio id="audio" controls class="hidden"></audio><div id="sFeedback" class="feedback hidden"></div><button class="btn" id="sBtn" onclick="checkSpeaking()" disabled>Continue →</button></div></div>
+<div class="section" id="s5"><div class="card"><div class="progress"><div class="progress-bar" style="width:100%"></div></div><h2>5. Grammar Quiz</h2><div id="grammarQuestions"></div><button class="btn btn-orange" onclick="submitFinal()">Submit Homework ✓</button></div></div>
+<div class="section" id="results"><div class="score-card"><p style="opacity:.8">Session 14 Complete!</p><div class="score-big" id="finalPct">0%</div><p id="studentDisplay"></p><div class="scores"><div><label>Reading</label><span id="scL">0/3</span></div><div><label>Vocab</label><span id="scV">0/6</span></div><div><label>Writing</label><span id="scW">0/20</span></div><div><label>Speaking</label><span id="scS">0/20</span></div><div><label>Grammar</label><span id="scG">0/8</span></div></div><button class="btn btn-orange" id="submitBtn" style="margin-top:25px" onclick="submitToTeacher()">Submit to Teacher →</button><div id="submitStatus" style="display:none;margin-top:18px;padding:14px;border-radius:12px;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;font-weight:600;text-align:center"></div></div><div style="text-align:center;margin-top:20px"><button class="btn" style="background:#fff;color:#5B5091" onclick="location.reload()">Try Again</button></div></div>
+</div>
+<script>
+const SESSION='14';let name='',scores={l:0,v:0,w:0,s:0,g:0},writingText='';let isRec=false,mediaRec=null,chunks=[],recTime=0,recTimer=null;let readingAnswers=[],grammarAnswers=[],vocabItems=[];
+let speechTranscript='',recognition=null;
+function setTeacher(sel){var opt=sel.options[sel.selectedIndex];var th=document.getElementById('teacherName');if(th)th.value=opt?(opt.getAttribute('data-teacher')||''):'';}
+const readingQBank=[{q:"What must parents return to the teacher by Friday?",opts:["A signed permission slip","A completed science project","An appointment request"],correct:0},{q:"What is the primary purpose of the field trip to Mount Vernon?",opts:["To participate in a PE activity","To bring Social Studies lessons to life","To meet with a school counselor"],correct:1},{q:"What item are students required to bring for the trip?",opts:["A sack lunch","A new GPA report","Extra homework"],correct:0}];
+const grammarQBank=[{q:"Our Social Studies class ________ anywhere this year, so we are ready for Mount Vernon.",opts:["hasn't been","haven't been","hasn't be"],correct:0},{q:"The counselor ________ several meetings already to help students organize their groups.",opts:["has had","have had","had have"],correct:0},{q:"The principal ________ a special announcement for the newsletter to inform all the parents.",opts:["have written","has wrote","has written"],correct:2},{q:"Our teacher ________ many photos of our history projects to display them in the hallway.",opts:["has taken","have taken","has took"],correct:0},{q:"The school nurse ________ a great job organizing the first-aid kits for our all-day outing.",opts:["has done","have done","has did"],correct:0},{q:"Several students ________ to bring their signed permission slips, so the secretary is calling their parents.",opts:["has forgotten","have forgotten","have forgot"],correct:1},{q:"We have studied George Washington's life ________ two weeks to understand his role in history.",opts:["since","for","during"],correct:1},{q:"I have known about the Mount Vernon trip ________ January, when it was first announced.",opts:["since","for","ago"],correct:0}];
+const vocabBank=[{idiom:"GPA",meaning:"a number that shows a student's average grade over time"},{idiom:"Band",meaning:"a class where students learn to play instruments together"},{idiom:"Appointment",meaning:"a meeting scheduled with a professional"},{idiom:"Secretary",meaning:"the person in the front office who helps manage school records"},{idiom:"Art",meaning:"a creative class where students draw, paint, or sculpt"},{idiom:"After school program",meaning:"programs held after the final bell, like sports or clubs"}];
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
+function initQuestions(){const rQs=shuffle([...readingQBank]).slice(0,3);let rHTML='';rQs.forEach((q,i)=>{const shuffledOpts=q.opts.map((opt,idx)=>({text:opt,isCorrect:idx===q.correct}));shuffle(shuffledOpts);readingAnswers[i]=shuffledOpts.findIndex(o=>o.isCorrect);rHTML+=`<div class="question"><h4>${i+1}. ${q.q}</h4>`;shuffledOpts.forEach((opt,j)=>{rHTML+=`<div class="option" onclick="sel(this)" data-v="${j}"><div class="circle"></div>${opt.text}</div>`;});rHTML+=`</div>`;});document.getElementById('readingQuestions').innerHTML=rHTML;vocabItems=shuffle([...vocabBank]).slice(0,6);let vHTML='';vocabItems.forEach((v,i)=>{vHTML+=`<div class="question"><p>${i+1}. "${v.idiom}" means: <input type="text" class="fill-input" data-a="${v.meaning}" placeholder="?"></p></div>`;});document.getElementById('vocabQuestions').innerHTML=vHTML;const gQs=shuffle([...grammarQBank]).slice(0,8);let gHTML='';gQs.forEach((q,i)=>{const shuffledOpts=q.opts.map((opt,idx)=>({text:opt,isCorrect:idx===q.correct}));shuffle(shuffledOpts);grammarAnswers[i]=shuffledOpts.findIndex(o=>o.isCorrect);gHTML+=`<div class="question" data-c="${grammarAnswers[i]}"><h4>${i+1}. ${q.q}</h4>`;shuffledOpts.forEach((opt,j)=>{gHTML+=`<div class="option" onclick="sel(this)" data-v="${j}"><div class="circle"></div>${opt.text}</div>`;});gHTML+=`</div>`;});document.getElementById('grammarQuestions').innerHTML=gHTML;}
+function startQuiz(){name=document.getElementById('studentName').value.trim();const cls=document.getElementById('className').value;if(!name){alert('Please enter your name');return;}if(!cls){alert('Please select your class');return;}setTeacher(document.getElementById('className'));initQuestions();showSection('s1');}
+function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function sel(el){el.parentElement.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');}
+function checkS1(){let correct=0;document.querySelectorAll('#readingQuestions .question').forEach((q,i)=>{const selected=q.querySelector('.option.selected');if(selected&&parseInt(selected.dataset.v)===readingAnswers[i])correct++;});scores.l=correct;showSection('s2');}
+function checkS2(){let correct=0;document.querySelectorAll('.fill-input').forEach(input=>{const val=input.value.trim().toLowerCase();const ans=input.dataset.a.toLowerCase();if(val.includes(ans.split(' ')[0])){correct++;input.style.color='#22c55e';}else{input.style.color='#ef4444';}});scores.v=correct;showSection('s3');}
+document.getElementById('writing').addEventListener('input',function(){document.getElementById('wc').textContent=this.value.trim().split(/\s+/).filter(w=>w).length;});
+function checkWriting(){writingText=document.getElementById('writing').value;const text=writingText.toLowerCase();const ppPatterns=['have studied','have learned','have taken','have been','have done','have read','have written','have worked','have completed','have attended','have practiced','have finished','have tried','have improved','have passed'];const found=ppPatterns.filter(p=>text.includes(p)).length;const hasHaveHas=(text.match(/\b(have|has)\b/g)||[]).length;const presentPerfectCount=Math.max(found,Math.min(hasHaveHas,5));scores.w=Math.min(20,presentPerfectCount>=3?20:presentPerfectCount===2?14:presentPerfectCount===1?8:4);document.getElementById('wFeedback').innerHTML='<b>Feedback:</b> Found approximately '+presentPerfectCount+' present perfect verb(s). (Aim for 3)<br><b>Score: '+scores.w+'/20</b>';document.getElementById('wFeedback').classList.remove('hidden');document.getElementById('wBtn').classList.add('hidden');document.getElementById('wNext').classList.remove('hidden');}
+async function toggleRec(){
+  if(!isRec){
+    speechTranscript='';
+    var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(!SR){alert('Speech recognition not supported. Please use Chrome or Safari.');return;}
+    isRec=true;recTime=0;
+    document.getElementById('recBtn').classList.add('recording');
+    document.getElementById('recStatus').textContent='Recording... speak clearly!';
+    document.getElementById('sBtn').disabled=false;
+    recTimer=setInterval(function(){
+      recTime++;
+      document.getElementById('timer').textContent=Math.floor(recTime/60)+':'+(recTime%60).toString().padStart(2,'0');
+    },1000);
+    recognition=new SR();
+    recognition.continuous=false;
+    recognition.interimResults=false;
+    recognition.lang='en-US';
+    recognition.onresult=function(e){
+      for(var i=e.resultIndex;i<e.results.length;i++){
+        if(e.results[i].isFinal)speechTranscript+=e.results[i][0].transcript+' ';
+      }
+    };
+    recognition.onerror=function(e){console.log('Speech error:',e.error);};
+    recognition.onend=function(){
+      if(isRec){try{recognition.start();}catch(err){console.log('Restart fail:',err);}}
+    };
+    try{recognition.start();}catch(e){console.log('Start fail:',e);alert('Could not start microphone: '+e.message);}
+  }else{
+    isRec=false;
+    if(recognition){try{recognition.stop();}catch(e){} recognition=null;}
+    clearInterval(recTimer);
+    document.getElementById('recBtn').classList.remove('recording');
+    document.getElementById('recStatus').textContent='Recording saved!';
+  }
+}
+function checkSpeaking(){scores.s=recTime>=30?20:recTime>=20?15:recTime>=10?10:5;document.getElementById('sFeedback').innerHTML='<b>Duration:</b> '+Math.floor(recTime/60)+':'+(recTime%60).toString().padStart(2,'0')+'<br><b>Score: '+scores.s+'/20</b>';document.getElementById('sFeedback').classList.remove('hidden');showSection('s5');}
+function submitFinal(){let correct=0;document.querySelectorAll('#grammarQuestions .question').forEach((q,i)=>{const sel=q.querySelector('.option.selected');const ans=parseInt(q.dataset.c);if(sel){if(parseInt(sel.dataset.v)===ans){correct++;sel.classList.add('correct');}else{sel.classList.add('incorrect');q.querySelector('[data-v="'+ans+'"]').classList.add('correct');}}});scores.g=correct;const total=scores.l+scores.v+scores.w+scores.s+scores.g;const pct=Math.round(total/57*100);document.getElementById('finalPct').textContent=pct+'%';document.getElementById('studentDisplay').textContent=name;document.getElementById('scL').textContent=scores.l+'/3';document.getElementById('scV').textContent=scores.v+'/6';document.getElementById('scW').textContent=scores.w+'/20';document.getElementById('scS').textContent=scores.s+'/20';document.getElementById('scG').textContent=scores.g+'/8';showSection('results');}
+let submitted=false;
+function submitToTeacher(){
+  if(submitted)return;submitted=true;
+  var btn=document.getElementById('submitBtn');
+  var statusEl=document.getElementById('submitStatus');
+  if(btn){btn.disabled=true;btn.textContent='Submitting...';}
+  if(statusEl){statusEl.style.display='none';}
+  var ta=document.getElementById('writing');
+  if(ta && ta.value){writingText=ta.value;}
+  var clsVal=document.getElementById('className')?document.getElementById('className').value:'';
+  var total=scores.l+scores.v+scores.w+scores.s+scores.g;
+  var pct=Math.round(total/57*100);
+  var formData=new FormData();
+  formData.append('entry.518151516',name);
+  formData.append('entry.710610284',clsVal);
+  formData.append('entry.864654596',SESSION);
+  formData.append('entry.258952242',scores.l+'/3');
+  formData.append('entry.859150584',scores.v+'/6');
+  formData.append('entry.1121796741',scores.w+'/20');
+  formData.append('entry.1435469716',scores.s+'/20');
+  formData.append('entry.1998281944',scores.g+'/8');
+  formData.append('entry.1207114914',pct+'%');
+  formData.append('entry.939912807',writingText||'');
+  formData.append('entry.2086302086',speechTranscript||'No transcript captured');
+  function showSuccess(){
+    if(btn){btn.textContent='Submitted ✓';btn.style.background='#22c55e';btn.disabled=true;}
+    if(statusEl){statusEl.textContent='✅ Homework submitted! Your teacher received your work.';statusEl.style.display='block';}
+  }
+  function showFailure(){
+    submitted=false;
+    if(btn){btn.disabled=false;btn.textContent='Failed - Tap to Retry';btn.style.background='#ef4444';}
+    if(statusEl){statusEl.textContent='⚠️ Submission failed. Check your internet and tap Retry.';statusEl.style.display='block';statusEl.style.background='#fef2f2';statusEl.style.color='#991b1b';}
+  }
+  var done=false;
+  var timeoutId=setTimeout(function(){if(!done){done=true;showSuccess();}},6000);
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSf9uEs5MqWLveyoaMBxeWx3pW1b90siwgaom766CpwqnOI7Dg/formResponse',{method:'POST',mode:'no-cors',body:formData})
+    .then(function(){if(done)return;done=true;clearTimeout(timeoutId);showSuccess();})
+    .catch(function(){if(done)return;done=true;clearTimeout(timeoutId);showFailure();});
+}
+</script>
+</body>
+</html>
